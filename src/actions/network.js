@@ -38,8 +38,10 @@ export function saveCategoryOffset(category, offset) {
     offset,
   };
 }
+
 const regexMagnent = /\b[0-9a-zA-Z]{40}\b/;
 const regexPan = /\bs\/[0-9a-zA-Z]{8}\b/;
+
 function resolveDetailData(res) {
   const el = document.createElement('html');
   el.innerHTML = res;
@@ -62,13 +64,16 @@ function resolveDetailData(res) {
     baidupan,
   };
 }
+
 const getContent = node => {
   try {
     node.removeChild(node.getElementsByTagName('img')[0]);
     node.removeChild(node.getElementsByTagName('a')[0]);
-  } catch (e) {// empty}
+  } catch (e) {
+    // empty}
+  }
   return node;
-}
+};
 
 function resolveShrineData(res, category) {
   switch (category) {
@@ -125,9 +130,8 @@ function resolveShrineData(res, category) {
   }
 }
 
-const IP_ADDRESS = `http://localhost:${config.port}/api`;
-
 export function fetchHome(page, category) {
+  const IP_ADDRESS = `http://localhost:${config.port}/api`;
   return dispatch => {
     axios
       .get(`${IP_ADDRESS}/wp/${category}.html/page/${page}`)
@@ -137,11 +141,14 @@ export function fetchHome(page, category) {
         );
         return 0;
       })
-      .catch(() => {});
+      .catch(() => {
+        // empty
+      });
   };
 }
 
 export function fetchDetail(category, id) {
+  const IP_ADDRESS = `http://localhost:${config.port}/api`;
   return dispatch => {
     axios
       .get(`${IP_ADDRESS}/wp/${id}.html`)
@@ -149,6 +156,8 @@ export function fetchDetail(category, id) {
         dispatch(addDetail(resolveDetailData(response.data), category, id));
         return 0;
       })
-      .catch(() => {});
+      .catch(() => {
+        // empty
+      });
   };
 }
