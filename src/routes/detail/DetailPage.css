@@ -1,0 +1,42 @@
+
+.progressContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.card {
+  color: black;
+  max-width: 1000px;
+  margin: 10px;
+  font-size: 1rem;
+}
+
+.contentCard {
+  padding: 50px;
+  background-color: #232c39;
+  max-width: 900px;
+  margin: 10px;
+  font-size: 1rem;
+}
+
+.magnentContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.content {
+  position: absolute;
+  top: 64px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  overflow-y: auto;
+}
