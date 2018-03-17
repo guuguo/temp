@@ -1,10 +1,19 @@
+// @flow
 import React, { Component } from 'react';
 import Button from 'material-ui/Button';
 import LinkIcon from 'material-ui-icons/Link';
+import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import { CircularProgress } from 'material-ui/Progress';
 import styles from './LoadButton.css';
 
-export default class LoadButton extends Component {
+type Props = {
+  category: string,
+  fetchDetail: () => void,
+  showSnack: () => void,
+  item: {},
+};
+
+class LoadButton extends Component<Props> {
   constructor() {
     super();
     this.state = {
@@ -38,7 +47,7 @@ export default class LoadButton extends Component {
           variant="fab"
           style={{ color: isDetail ? 'blue' : 'gray' }}
           color="inherit"
-          onClick={this.handleUrlButtonClick.bind(this,item)}
+          onClick={() => this.handleUrlButtonClick(item)}
         >
           <LinkIcon />
         </Button>
@@ -51,3 +60,5 @@ export default class LoadButton extends Component {
     );
   }
 }
+
+export default withStyles(styles)(LoadButton);

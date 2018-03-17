@@ -1,8 +1,9 @@
+// @flow
 import React from 'react';
 import { withStyles } from 'material-ui/styles';
 import AppBar from 'material-ui/AppBar';
 import Tabs, { Tab } from 'material-ui/Tabs';
-import ContentPage from './ContentPage';
+import ContentPage from '../../components/ContentPage/ContentPage';
 
 export const categories = {
   anime: '动画',
@@ -33,19 +34,19 @@ const styles = theme => ({
     right: 10,
   },
 });
-// type shrineTabsProps = {
-//   classes: {},
-//   theme: {},
-//   fetchHome: (page, category) => void,
-//   addData: () => void,
-//   saveCategoryState: () => void,
-//   saveCategoryOffset: () => void,
-//   fetchDetail:()=>void,
-//   data: {},
-//   history:{}
-// };
+type shrineTabsProps = {
+  classes: {},
+  theme: {},
+  fetchHome: (page, category) => void,
+  addData: () => void,
+  saveCategoryState: () => void,
+  saveCategoryOffset: () => void,
+  fetchDetail: () => void,
+  data: {},
+  history: {},
+};
 
-class ShrineTabsPage extends React.Component {
+class ShrineTabsPage extends React.Component<shrineTabsProps> {
   state = {};
 
   handleChange = (event, value) => {
@@ -54,7 +55,7 @@ class ShrineTabsPage extends React.Component {
 
   render() {
     const { data, classes, theme } = this.props;
-    let currentCategory = data.currentCategory;
+    let { currentCategory } = data;
     if (currentCategory === undefined) {
       currentCategory = 0;
     }

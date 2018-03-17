@@ -13,13 +13,13 @@ import Detail from './DetailPage';
 
 const title = 'Contact Us';
 
-function action() {
+function action(c, params) {
   return {
     chunks: ['detail'],
     title,
     component: (
       <Layout>
-        <Detail title={title} />
+        <Detail title={title} params={params} />
       </Layout>
     ),
   };
