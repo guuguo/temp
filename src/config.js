@@ -17,7 +17,7 @@
 
 module.exports = {
   // Node.js app
-  port: process.env.PORT || 3006,
+  port: /*process.env.PORT || */80,
 
   // https://expressjs.com/en/guide/behind-proxies.html
   trustProxy: process.env.TRUST_PROXY || 'loopback',
@@ -29,7 +29,7 @@ module.exports = {
     // API URL to be used in the server-side code
     serverUrl:
       process.env.API_SERVER_URL ||
-      `http://localhost:${process.env.PORT || 3000}`,
+      `http://localhost:${/*process.env.PORT || */80}`,
   },
 
   // Database
