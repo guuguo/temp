@@ -14,11 +14,12 @@
 //     'Do not import `config.js` from inside the client-side code.',
 //   );
 // }
+const isDebug = !process.argv.includes('--release');
 
 module.exports = {
   // Node.js app
-  port: /* process.env.PORT || */ 8080,
-  ip: process.env.API_SERVER_URL || 'localhost:8080',
+  port: isDebug ? process.env.PORT || 8080 : 80,
+  ip: isDebug ? process.env.API_SERVER_URL || 'localhost:8080' : '45.77.100.73',
   // https://expressjs.com/en/guide/behind-proxies.html
   trustProxy: process.env.TRUST_PROXY || 'loopback',
 
@@ -27,9 +28,10 @@ module.exports = {
     // API URL to be used in the client-side code
     clientUrl: process.env.API_CLIENT_URL || '',
     // API URL to be used in the server-side code
-    serverUrl:
-      process.env.API_SERVER_URL ||
-      `http://localhost:${/* process.env.PORT || */ 8080}`,
+    serverUrl: isDebug
+      ? process.env.API_SERVER_URL ||
+        `http://localhost:${/* process.env.PORT || */ 8080}`
+      : '45.77.100.73',
   },
 
   // Database

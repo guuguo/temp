@@ -39,7 +39,11 @@ export function saveCategoryOffset(category, offset) {
   };
 }
 
-const regexMagnent = /\b[0-9a-zA-Z]{40}\b/;
+const regexMagnent = new RegExp(
+  '[^0-9a-zA-Z/]([0-9a-zA-Z]{40}|[0-9a-zA-Z]{32})(?![0-9a-zA-Z.]+)',
+  'g',
+);
+
 const regexPan = /\bs\/[0-9a-zA-Z]{8}\b/;
 
 function resolveDetailData(res) {
@@ -52,7 +56,10 @@ function resolveDetailData(res) {
   const panMatch = articalE.innerHTML.match(regexPan);
   let magnent;
   if (magMatch === undefined || magMatch === null) magnent = [];
-  else magnent = magMatch.map(it => `magnet:?xt=urn:btih:${it}`);
+  else
+    magnent = magMatch.map(
+      it => `magnet:?xt=urn:btih:${it.substr(1, it.length - 1)}`,
+    );
 
   let baidupan;
   if (panMatch === undefined || panMatch === null) baidupan = [];

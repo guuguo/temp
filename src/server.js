@@ -131,10 +131,7 @@ app.get('*', async (req, res, next) => {
       user: req.user || null,
     };
 
-    const store = configureStore(initialState/*, {
-      fetch,
-      // I should not use `history` on server.. but how I do redirection? follow universal-router
-    }*/);
+    const store = configureStore(initialState);
 
     // store.dispatch(
     //   setRuntimeVariable({

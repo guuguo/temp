@@ -197,7 +197,7 @@ class ContentPage extends Component<Props> {
                 item={item}
                 category={this.props.category}
                 fetchDetail={this.props.fetchDetail}
-                showSnack={() => this.showSnack()}
+                showSnack={() => this.showSnack(item)}
               />
             </div>
           );

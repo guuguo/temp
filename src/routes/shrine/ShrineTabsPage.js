@@ -1,9 +1,11 @@
 // @flow
 import React from 'react';
-import { withStyles } from 'material-ui/styles';
+// import { withStyles } from 'material-ui/styles';
+import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import AppBar from 'material-ui/AppBar';
 import Tabs, { Tab } from 'material-ui/Tabs';
 import ContentPage from '../../components/ContentPage/ContentPage';
+import classes from './ShrineTabsPage.css';
 
 export const categories = {
   anime: '动画',
@@ -14,29 +16,7 @@ export const categories = {
   book: '轻小说',
 };
 
-const styles = theme => ({
-  root: {
-    backgroundColor: theme.palette.background.default,
-  },
-  header: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-  },
-  content: {
-    overflowX: 'hidden',
-    overflowY: 'hidden',
-    position: 'absolute',
-    top: 50,
-    bottom: 10,
-    left: 10,
-    right: 10,
-  },
-});
 type shrineTabsProps = {
-  classes: {},
-  theme: {},
   fetchHome: (page, category) => void,
   addData: () => void,
   saveCategoryState: () => void,
@@ -54,7 +34,7 @@ class ShrineTabsPage extends React.Component<shrineTabsProps> {
   };
 
   render() {
-    const { data, classes, theme } = this.props;
+    const { data } = this.props;
     let { currentCategory } = data;
     if (currentCategory === undefined) {
       currentCategory = 0;
@@ -88,7 +68,6 @@ class ShrineTabsPage extends React.Component<shrineTabsProps> {
             fetchDetail={this.props.fetchDetail}
             history={this.props.history}
             data={this.props.data}
-            dir={theme.direction}
           />
         </div>
       </div>
@@ -96,4 +75,4 @@ class ShrineTabsPage extends React.Component<shrineTabsProps> {
   }
 }
 
-export default withStyles(styles, { withTheme: true })(ShrineTabsPage);
+export default withStyles(classes)(ShrineTabsPage);

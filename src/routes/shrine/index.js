@@ -14,6 +14,7 @@ import Layout from '../../components/Layout/MyLayout';
 function action() {
   return {
     chunks: ['shrine'],
+    title: '琉璃神社',
     component: (
       <Layout>
         <ShrinePage />
