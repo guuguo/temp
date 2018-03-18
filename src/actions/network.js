@@ -129,9 +129,9 @@ function resolveShrineData(res, category) {
     }
   }
 }
+const IP_ADDRESS = `http://${config.ip}/api`;
 
 export function fetchHome(page, category) {
-  const IP_ADDRESS = `http://localhost:${config.port}/api`;
   return dispatch => {
     axios
       .get(`${IP_ADDRESS}/wp/${category}.html/page/${page}`)
@@ -148,7 +148,6 @@ export function fetchHome(page, category) {
 }
 
 export function fetchDetail(category, id) {
-  const IP_ADDRESS = `http://localhost:${config.port}/api`;
   return dispatch => {
     axios
       .get(`${IP_ADDRESS}/wp/${id}.html`)
