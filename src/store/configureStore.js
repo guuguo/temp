@@ -3,12 +3,11 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 import { name, version } from '../../package.json';
 import rootReducer from '../reducers';
-import createHelpers from './createHelpers';
 import createLogger from './logger';
 
 export default function configureStore(initialState, helpersConfig) {
-  const helpers = createHelpers(helpersConfig);
-  const middleware = [thunk.withExtraArgument(helpers)];
+  // const helpers = createHelpers(helpersConfig);
+  const middleware = [thunk.withExtraArgument()];
 
   let enhancer;
 

@@ -11,7 +11,7 @@ import React from 'react';
 import Layout from '../../components/Layout/MyLayout';
 import Detail from './DetailPage';
 
-const title = 'Contact Us';
+const title = '详细内容';
 
 function action(c, params) {
   return {
